@@ -13,7 +13,7 @@ class MessageTimeLine extends Component{
             showError: false
         }
     }
-    componentDidMount(){
+    componentWillMount(){
         this.props.fetchMessages()     // load all messages before component mounts
             .then(() => this.setState({renderPage: true, showError: false}))
             .catch(() => {
@@ -28,6 +28,7 @@ class MessageTimeLine extends Component{
                     <div className="row">
                         <UserAside 
                             currentUser={currentUser}
+                            pageOwner={pageOwner}
                             profileImageUrl={profileImageUrl}
                             username={username}
                             email={email}

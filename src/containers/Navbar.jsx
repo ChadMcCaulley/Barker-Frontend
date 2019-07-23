@@ -28,7 +28,7 @@ class Navbar extends Component {
                                 </li> */}
                                 <li>
                                     <NewMessage userId={this.props.currentUser.user.id}/>
-                                </li>
+                                </li> 
                                 <li>
                                     <a href="https://yelp-camp-cm.herokuapp.com/" className="navbar-li">YelpCamp</a>
                                 </li>

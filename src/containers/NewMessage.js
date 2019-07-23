@@ -21,7 +21,7 @@ class NewMessage extends Component {
         this
             .props
             .postNewMessage(this.state.message, false, null); //post new message to database
-        this.setState({message: ""}); // reset message
+        this.setState({message: "", isActive: false}); // reset message
     }
     handleClick = event => {
         event.preventDefault();

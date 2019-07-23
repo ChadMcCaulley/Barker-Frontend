@@ -7,6 +7,7 @@ import MessageListPageOwner from "../containers/MessageListPageOwner";
 class UserPage extends Component{
     constructor(props){
         super(props);
+        console.log(props);
     }
     render(){
         const {profileImageUrl, username, email, messages, followers} = this.props.pageOwner.user;

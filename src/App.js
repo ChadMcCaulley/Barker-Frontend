@@ -11,7 +11,6 @@ const store = configureStore();
 if (localStorage.jwtToken) {
     setAuthorizationToken(localStorage.jwtToken); // if server fails, repopulate the token
     // Prevent anyone from changing the jwtToken
-    console.log(localStorage);
     try {
         store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)));
         if (localStorage.pageOwner !== null) 

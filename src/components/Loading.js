@@ -1,12 +1,13 @@
-import React from 'react'
+import React from 'react';
+import loadingGif from "../images/gif/loading-arrow.gif";
 
-const Loading = () => {
+export default function Loading() {
     return (
-        <div>
-            Loading...
+        <div className="loading">
+            <h4> loading messages... </h4>
+            <img src={loadingGif} alt=""/>
         </div>
     )
 }
 
-export default Loading
 
