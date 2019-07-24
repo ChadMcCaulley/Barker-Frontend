@@ -1,5 +1,4 @@
-The front end portion of a twitter clone known as barker
-
+# Barker Front End
 The site, running via heroku, can be found here:
     https://barkersite.herokuapp.com/
     
