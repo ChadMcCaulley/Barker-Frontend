@@ -21,14 +21,14 @@ class Navbar extends Component {
                     {this.props.currentUser.isAuthenticated
                         ? (
                             <ul className="nav navbar-nav navbar-right">
-                                {/* <li>
-                                    <Link to={`/users/${this.props.currentUser.user.id}/messages/new`}>
+                                <li>
+                                    <Link to={`/users/${this.props.currentUser.user.id}/messages/new`} className="navbar-li">
                                         New Message
                                     </Link>
-                                </li> */}
-                                <li>
+                                </li>
+                                {/* <li>
                                     <NewMessage userId={this.props.currentUser.user.id}/>
-                                </li> 
+                                </li>  */}
                                 <li>
                                     <a href="https://yelp-camp-cm.herokuapp.com/" className="navbar-li">YelpCamp</a>
                                 </li>
