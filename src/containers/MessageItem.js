@@ -87,7 +87,7 @@ class MessageItem extends Component{
                         className="timeline-image"
                     />
                     <div className="message-area">
-                        <Link onClick={this.getPageOwner} id="message-username">@{username} &nbsp;</Link>
+                        <Link to="#" onClick={this.getPageOwner} id="message-username">@{username} &nbsp;</Link>
                         <span className="text-muted">
                             <Moment className="text-muted" format="Do MMM YYYY">
                                 {date}

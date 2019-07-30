@@ -5,6 +5,7 @@ import Homepage from "../pages/Homepage";
 import UserPage from "../pages/UserPage";
 import AccountPage from "../pages/AccountPage";
 import AuthForm from "../pages/AuthForm";
+import GuestLogin from "../pages/GuestLogin";
 import ForgotPassword from "../pages/ForgotPassword";
 import {authUser, forgotPassword} from "../store/actions/auth";
 import {removeError} from "../store/actions/errors";
@@ -48,6 +49,10 @@ const Main = props => {
                             heading="Welcome Back"
                             {...props}/>)
                     }}/>
+                    <Route
+                        exact
+                        path="/signin/asguest"
+                        render={props => {return (<GuestLogin history={history}/>)}}/>
                     <Route
                         exact
                         path="/signup"

@@ -2,9 +2,6 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 
 const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-const passwordRegexStrong = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-const mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=" +
-        ".{6,})");
 
 export default class AuthForm extends Component {
     constructor(props) {
@@ -95,8 +92,7 @@ export default class AuthForm extends Component {
                                     name="email"
                                     onChange={this.handleChange}
                                     value={email}
-                                    type="text"/> 
-                                {signUp && formErrors.email !== "" && <span className="form-error">{formErrors.email}</span>}
+                                    type="text"/> {signUp && formErrors.email !== "" && <span className="form-error">{formErrors.email}</span>}
                             </div>
                             <div>
                                 <label htmlFor="password">Password</label>
@@ -105,11 +101,10 @@ export default class AuthForm extends Component {
                                     id="password"
                                     name="password"
                                     onChange={this.handleChange}
-                                    type="password"/> 
-                                {signUp && formErrors.password !== "" && <span className="form-error">{formErrors.password}</span>}
+                                    type="password"/> {signUp && formErrors.password !== "" && <span className="form-error">{formErrors.password}</span>}
                             </div>
                             {signUp && ( 
-                            <> 
+                            <div> 
                                 <div>
                                     <label htmlFor="username">Username</label>
                                     <input
@@ -118,20 +113,19 @@ export default class AuthForm extends Component {
                                         name="username"
                                         onChange={this.handleChange}
                                         value={username}
-                                        type="text"/>
-                                    {formErrors.username !== "" && <span className="form-error">{formErrors.username}</span>}
+                                        type="text"/> {formErrors.username !== "" && <span className="form-error">{formErrors.username}</span>}
                                 </div> 
-                                <div> 
-                                    <label htmlFor="profileImg">Profile Image Url</label>
-                                    <input
-                                    className="form-control"
-                                    id="profileImg"
-                                    name="profileImageUrl"
-                                    onChange={this.handleChange}
-                                    value={profileImageUrl}
-                                    type="text"/> 
+                                < div > 
+                                    <label htmlFor="profileImg">Profile Image Url</label> 
+                                    <input 
+                                    className = "form-control" 
+                                    id = "profileImg" 
+                                    name = "profileImageUrl" 
+                                    onChange = {this.handleChange}
+                                    value = {profileImageUrl}
+                                    type = "text"/> 
                                 </div> 
-                            </>
+                            </div>
                             )}
                             <button className="btn btn-primary btn-block btn-lg" type="submit">
                                 {buttonText}

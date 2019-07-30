@@ -7,7 +7,6 @@ import MessageListPageOwner from "../containers/MessageListPageOwner";
 class UserPage extends Component{
     constructor(props){
         super(props);
-        console.log(props);
     }
     render(){
         const {profileImageUrl, username, email, messages, followers} = this.props.pageOwner.user;
@@ -24,8 +23,8 @@ class UserPage extends Component{
                             className="img-thumbnail"
                         />
                         <div>
-                            <Link className="panel-body-link"> {username} </Link>
-                            <Link className="panel-body-link"> {email} </Link>
+                            <Link to="/" className="panel-body-link"> {username} </Link>
+                            <Link to="/" className="panel-body-link"> {email} </Link>
                             <div className="followers-comments">
                                 <div> Comments {messages.length} </div>
                                 <div> Followers {followers.length} </div> 

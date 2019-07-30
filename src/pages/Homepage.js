@@ -2,8 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 import MessageTimeline from "./MessageTimeline";
 
-const Homepage = ({currentUser, pageOwner, history}) => {
-    if(!currentUser.isAuthenticated){
+const Homepage = ({currentUser, pageOwner, history, isGuest}) => {
+    if(!currentUser.isAuthenticated && !isGuest){
         return(
             <div className="home-hero">
                 <h1> New to Barker?</h1>

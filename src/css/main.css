@@ -207,6 +207,7 @@ a.btn.btn-danger:hover {
   ***********************************/
 .panel-body-link {
   color: black;
+  display: inline-block;
 }
 
 .panel-body-link:hover {
@@ -216,7 +217,7 @@ a.btn.btn-danger:hover {
 }
 
 .userAside {
-  padding: 20px;
+  padding: 10%;
   background-color: white;
 }
 

@@ -8,16 +8,16 @@ class UserAside extends Component {
     constructor(props) {
         super(props);
     }
-    // getPageOwner = event => {
-    //     event.preventDefault();
-    //     this.props.getPageOwner(this.props.currentUser)
-    //         .then(() => {
-    //             this.props.history.push(`/users/${this.props.currentUser}/userpage`);
-    //         })
-    //         .catch(err => {
-    //             return;
-    //         });
-    // }
+    getPageOwner = event => {
+        event.preventDefault();
+        this.props.getPageOwner(this.props.currentUser)
+            .then(() => {
+                this.props.history.push(`/users/${this.props.currentUser}/userpage`);
+            })
+            .catch(err => {
+                return;
+            });
+    }
     render() {
         const {
             profileImageUrl,
@@ -40,10 +40,10 @@ class UserAside extends Component {
                         height="200"
                         className="img-thumbnail"/>
                     <div>
-                        <Link onClick={this.getPageOwner} className="panel-body-link">
+                        <Link to="#" onClick={this.getPageOwner} className="panel-body-link">
                             {username}
                         </Link>
-                        <Link onClick={this.getPageOwner} className="panel-body-link">
+                        <Link to="#" onClick={this.getPageOwner} className="panel-body-link">
                             {email}
                         </Link>
                         <div className="followers-comments">

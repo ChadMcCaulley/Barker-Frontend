@@ -1,6 +1,6 @@
 $colors:(
-  $accent: #e6ecf0,
-  $primary: #1c92d2
+  accent: #e6ecf0,
+  primary: #1c92d2
 );
 
 body {
@@ -169,7 +169,7 @@ body {
     cursor: pointer;
   }
   .userAside{
-    padding: 20px;
+    padding: 10%;
     background-color: white;
   }
   

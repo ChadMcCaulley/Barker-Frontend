@@ -25,7 +25,7 @@ class MessageListPageOwner extends Component {
                 return(
                     <MessageItem 
                         pageOwner={pageOwner}
-                        key={m.id} 
+                        key={m._id} 
                         date={m.createAt} 
                         text={m.text} 
                         username={m.user.username} 

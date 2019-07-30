@@ -30,9 +30,6 @@ class Navbar extends Component {
                                     <NewMessage userId={this.props.currentUser.user.id}/>
                                 </li>  */}
                                 <li>
-                                    <a href="https://yelp-camp-cm.herokuapp.com/" className="navbar-li">YelpCamp</a>
-                                </li>
-                                <li>
                                     <Link to="/" className="navbar-li" onClick={this.logout}>
                                         Log Out
                                     </Link>
@@ -43,9 +40,6 @@ class Navbar extends Component {
                         : (
                             <ul className="nav navbar-nav navbar-right">
                                 <li>
-                                    <a href="https://yelp-camp-cm.herokuapp.com/" className="navbar-li">YelpCamp</a>
-                                </li>
-                                <li>
                                     <Link to="/signup" className="navbar-li">
                                         Sign Up
                                     </Link>
@@ -55,6 +49,9 @@ class Navbar extends Component {
                                         Log In
                                     </Link>
                                 </li>
+                                {/* <li>
+                                    <Link to="/signin/asguest" className="navbar-li"> Guest Log In</Link>
+                                </li> */}
                             </ul>
                         )}
                 </div>
