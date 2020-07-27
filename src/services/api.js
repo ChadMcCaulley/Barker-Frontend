@@ -10,6 +10,7 @@ export function setTokenHeader(token){
 
 export function apiCall(method, path, data){
     return new Promise((resolve, reject) => {
+        axios.defaults.baseURL = process.env.REACT_APP_AXIOS_BASE_URL || ''
         return axios[method.toLowerCase()](path, data)
             .then(res => {
                 return resolve(res.data);

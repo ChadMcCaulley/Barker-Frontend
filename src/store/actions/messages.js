@@ -54,7 +54,7 @@ export const postNewMessage = (text, isReply, messageRepliedTo) => (dispatch, ge
   return apiCall("post", `/api/users/${id}/messages`, {text, isReply, messageRepliedTo})
     .then(res => {
       if(isReply){
-        dispatch(addReply(res));
+        dispatch(addReply(res))
       }
     })
     .catch(err => dispatch(addError(err.message)))

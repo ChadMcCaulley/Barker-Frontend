@@ -76,7 +76,7 @@ class MessageItem extends Component{
                 replies={m.replies}
                 currentUser={currentUser}
                 pageOwner={this.props.pageOwner}
-                key={m.id} 
+                key={m._id}
                 date={m.createAt} 
                 text={m.text} 
                 username={m.user.username} 
@@ -93,8 +93,6 @@ class MessageItem extends Component{
                     <img 
                         src={profileImageUrl || DefaultProfileImg} 
                         alt={username}
-                        width="30%"
-                        height="30%"
                         className="timeline-image"
                     />
                     <div className="message-area">

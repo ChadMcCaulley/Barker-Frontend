@@ -33,9 +33,11 @@ class ReplyForm extends Component {
                     value={this.state.message}
                     onChange={e => this.setState({message: e.target.value})}
                 />
-                <button type="submit" className="btn btn-success btn-sm pull-right">
-                    REPLY
-                </button>
+                <div className="d-flex justify-content-end">
+                    <button type="submit" className="btn btn-success btn-sm pull-right mt-2 mb-4">
+                        REPLY
+                    </button>
+                </div>
             </form>
         )
     }
