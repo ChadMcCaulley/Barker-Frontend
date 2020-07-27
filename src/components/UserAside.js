@@ -5,9 +5,6 @@ import {getPageOwner} from "../store/actions/user";
 import DefaultProfileImg from "../images/default-profile-image.png";
 
 class UserAside extends Component {
-    constructor(props) {
-        super(props);
-    }
     getPageOwner = event => {
         event.preventDefault();
         this.props.getPageOwner(this.props.currentUser)

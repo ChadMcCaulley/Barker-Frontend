@@ -4,9 +4,6 @@ import {Link} from "react-router-dom";
 import MessageList from "../containers/MessageList";
 
 class AccountPage extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         const {messages, pageOwner, history, currentUser} = this.props;
         return (

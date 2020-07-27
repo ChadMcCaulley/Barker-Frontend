@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import {Link} from "react-router-dom";
 
 export default class GuestLogin extends Component {
     handleClick = e => {
-        
         this.props.history.push("/");
     }
     render() {

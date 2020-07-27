@@ -6,6 +6,7 @@ import {updateMessage} from "../store/actions/messages";
 import {Link} from "react-router-dom";
 import DefaultProfileImg from "../images/default-profile-image.png";
 import ReplyForm from "../containers/ReplyForm";
+import { BsTrash, BsPencil  } from "react-icons/bs";
 
 class MessageItem extends Component{
     constructor(props){
@@ -14,14 +15,23 @@ class MessageItem extends Component{
             showReplies: false,
             editComment: false,
             text: this.props.text,
-            prevText: this.props.text
+            prevText: this.props.text,
+            windowWidth: window.innerWidth
         };
     }
+
+    handleResize = (e) => {
+        this.setState({ windowWidth: window.innerWidth });
+    }
+    componentDidMount() {
+        window.addEventListener("resize", this.handleResize);
+    }
+
     showReplies = event => {
         event.preventDefault();
         this.setState({showReplies: !this.state.showReplies});
     }
-    showMessageEdit = event => {
+    toggleEditMessage = event => {
         event.preventDefault();
         this.setState({editComment: !this.state.editComment, text: this.state.prevText});
     }
@@ -43,18 +53,19 @@ class MessageItem extends Component{
     }
     addFollower = event => {
         event.preventDefault();
-        this.props.addFollower(this.props.messageUser, this.props.currentUser);
+        this.props.addFollower(this.props.messageUser, this.props.currentUser)
     }
     render(){
-        const   profileImageUrl = this.props.profileImageUrl,
-                username        = this.props.username,
-                messageRepliedTo = this.props.messageId,
-                date            = this.props.date,
-                isCorrectUser   = this.props.isCorrectUser,
-                currentUser     = this.props.currentUser,
-                history         = this.props.history,
-                replyIds        = this.props.replies,
-                removeMessage   = this.props.removeMessage;
+        const profileImageUrl  = this.props.profileImageUrl,
+              username         = this.props.username,
+              messageRepliedTo = this.props.messageId,
+              date             = this.props.date,
+              isCorrectUser    = this.props.isCorrectUser,
+              currentUser      = this.props.currentUser,
+              history          = this.props.history,
+              replyIds         = this.props.replies,
+              removeMessage    = this.props.removeMessage,
+              windowWidth      = this.state.windowWidth;
         let idsToReplies = [];
         for(let i = 0; i < replyIds.length; i++){
             let nextReply = this.props.messages.find(m => m._id === replyIds[i]);
@@ -93,11 +104,13 @@ class MessageItem extends Component{
                                 {date}
                             </Moment>
                         </span>
-                        <a className="btn btn-primary btn-xs" id="follow-button" onClick={this.addFollower}> 
-                            FOLLOW
-                        </a>
+                        {!isCorrectUser && (
+                            <div className="btn btn-primary btn-xs ml-2" id="follow-button" onClick={this.addFollower}> 
+                                FOLLOW
+                            </div>
+                        )}
                         {this.state.editComment  && isCorrectUser ? (
-                            <form onSubmit={this.submitMessageChange}>
+                            <form onSubmit={this.submitMessageChange} className="my-4">
                                 <textarea 
                                     rows="4"
                                     cols="10" 
@@ -105,26 +118,36 @@ class MessageItem extends Component{
                                     className="form-control"
                                     value={this.state.text}
                                     onChange={e => this.setState({text: e.target.value})}
-                                /> 
-                                <button type="submit" className="btn btn-success btn-sm"> UPDATE </button>
+                                />
+                                <div className="d-flex justify-content-end mt-2">
+                                    <button type="submit" className="btn btn-danger btn-sm mr-2">
+                                        Cancel
+                                    </button>
+                                    <button className="btn btn-success btn-sm" onClick={this.toggleEditMessage}>
+                                        Submit
+                                    </button>
+                                </div>
                             </form>
                         ) : (
                             <p> {this.state.prevText} </p>
                         )}
-                        
-                        <a className="btn btn-info btn-xs" id="reply-button" onClick={this.showReplies}> 
-                            REPLIES: {replyIds.length}
-                        </a>
-                        {isCorrectUser && (
-                            <div id="correct-user-message-buttons">
-                                <a className="btn btn-success btn-xs" onClick={this.showMessageEdit}> 
-                                    EDIT
-                                </a>
-                                <a className="btn btn-danger btn-xs" onClick={removeMessage}> 
-                                    DELETE
-                                </a>
+                        <div className="d-flex">
+                            <div className="btn btn-info" id="reply-button" onClick={this.showReplies}> 
+                                REPLIES: {replyIds.length}
                             </div>
-                        )}
+                            {isCorrectUser && (
+                                <div>
+                                    <div className="btn btn-success ml-2" onClick={this.toggleEditMessage}> 
+                                        { windowWidth > 770 ? 'EDIT' : null }
+                                        <BsPencil className="ml-1 mb-1"/>
+                                    </div>
+                                    <div className="btn btn-danger ml-2" onClick={removeMessage}> 
+                                        { windowWidth > 770 ? 'DELETE' : null }
+                                        <BsTrash className="ml-1 mb-1"/>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                     </div> 
                 </li>
                 {this.state.showReplies && (

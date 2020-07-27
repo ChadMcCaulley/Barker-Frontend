@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import Logo from "../images/barker-logo.png";
 import {logout} from "../store/actions/auth";
-import NewMessage from "./NewMessage";
 
 class Navbar extends Component {
     logout = e => {

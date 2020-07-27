@@ -4,9 +4,6 @@ import {removeMessage} from "../store/actions/messages";
 import MessageItem from "../containers/MessageItem";
 
 class MessageList extends Component {
-    constructor(props){
-        super(props);
-    }
     render(){
         const {messages, removeMessage, currentUser, pageOwner, history} = this.props;
         let messageList = messages.filter(m => m.isReply === false).map(m => (

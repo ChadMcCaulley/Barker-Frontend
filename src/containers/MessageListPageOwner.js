@@ -21,7 +21,7 @@ class MessageListPageOwner extends Component {
     render(){
         const {messages, removeMessage, currentUser, pageOwner, history} = this.props;
         let messageList = messages.map(m => {
-            if(m.user._id === pageOwner.user._id){
+            if(m.user._id === pageOwner.user._id) {
                 return(
                     <MessageItem 
                         pageOwner={pageOwner}
@@ -38,7 +38,8 @@ class MessageListPageOwner extends Component {
                     />
                 )
             }
-        });
+            return null
+        }).filter(v => v)
         return(
             <div className="row col-sm">
                 <div className="offset-1 col-sm-10">

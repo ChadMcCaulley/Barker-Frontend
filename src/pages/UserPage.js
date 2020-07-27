@@ -5,9 +5,6 @@ import DefaultProfileImg from "../images/default-profile-image.png";
 import MessageListPageOwner from "../containers/MessageListPageOwner";
 
 class UserPage extends Component{
-    constructor(props){
-        super(props);
-    }
     render(){
         const {profileImageUrl, username, email, messages, followers} = this.props.pageOwner.user;
         const isCorrectUser = this.props.pageOwner.user._id === this.props.currentUser.user.id;

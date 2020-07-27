@@ -1,5 +1,5 @@
 import React from "react";
-import {Switch, Route, withRouter, Redirect} from "react-router-dom";
+import {Switch, Route, withRouter } from "react-router-dom";
 import {connect} from "react-redux";
 import Homepage from "../pages/Homepage";
 import UserPage from "../pages/UserPage";
@@ -45,7 +45,7 @@ const Main = props => {
                             removeError={removeError}
                             errors={errors}
                             onAuth={authUser}
-                            buttonText="Log in"
+                            buttonText="Log In"
                             heading="Welcome Back"
                             {...props}/>)
                     }}/>

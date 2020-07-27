@@ -15,7 +15,8 @@ export default class AuthForm extends Component {
                 email: "",
                 username: "",
                 password: ""
-            }
+            },
+            loading: false
         };
     }
     handleChange = e => {
@@ -25,45 +26,30 @@ export default class AuthForm extends Component {
         let formErrors = {
             ...this.state.formErrors
         };
-        switch (name) {
-            case "email":
-                formErrors.email = emailRegex.test(value)
-                    ? ""
-                    : "Invalid Email Address";
-                break;
-            case "password":
-                formErrors.password = value.length >= 8 && value.length <= 32
-                    ? ""
-                    : "Password must be between 8 and 32 characters"
-                break;
-            case "username":
-                formErrors.username = value.length > 3 && value.length <= 32
-                    ? ""
-                    : "Username must be 3-32 characters long"
-                break;
+        if (name === 'email') formErrors.email = emailRegex.test(value) ? "" : "Invalid Email Address"
+        else if (name === 'password') {
+            formErrors.password = value.length >= 8 && value.length <= 32 ? "" : "Password must be between 8 and 32 characters"
+        }
+        else if (name === 'username') {
+            formErrors.username = value.length > 3 && value.length <= 32 ? "" : "Username must be 3-32 characters long"
         }
         this.setState({formErrors, [name]: value});
     };
     handleSubmit = event => {
         event.preventDefault();
-        const authType = this.props.signUp
-            ? "signup"
-            : "signin";
-        this
-            .props
-            .onAuth(authType, this.state)
-            .then(() => {
-                this
-                    .props
-                    .history
-                    .push("/"); // render the homepage
+        const authType = this.props.signUp ? "signup" : "signin";
+        this.setState({ loading: true })
+        this.props.onAuth(authType, this.state).then(() => {
+                this.setState({ loading: false })
+                this.props.history.push("/"); // render the homepage
             })
             .catch(() => {
-                return;
+                this.setState({ loading: false })
+                return
             })
     };
     render() {
-        const {formErrors, email, username, profileImageUrl} = this.state;
+        const {formErrors, email, username, profileImageUrl, loading} = this.state;
         const {
             heading,
             buttonText,
@@ -75,6 +61,8 @@ export default class AuthForm extends Component {
         history.listen(() => {
             removeError();
         });
+        let submitButtonClass = "btn btn-primary btn-block btn-lg mt-4"
+        if (loading) submitButtonClass += ' disabled'
         return (
             <div>
                 <div className="row justify-content-md-center text-center auth-form">
@@ -127,7 +115,10 @@ export default class AuthForm extends Component {
                                 </div> 
                             </div>
                             )}
-                            <button className="btn btn-primary btn-block btn-lg" type="submit">
+                            <button className={submitButtonClass} type="submit">
+                                { loading && (
+                                    <span class="spinner-border spinner-border-sm mr-4 mb-1" role="status"/>
+                                )}
                                 {buttonText}
                             </button>
                             {!signUp && (

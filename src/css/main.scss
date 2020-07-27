@@ -4,11 +4,11 @@ $colors:(
 );
 
 body {
-    background-color: map-get($colors, accent);
-  }
-  button{
-    outline:none !important;
-  }
+  background-color: map-get($colors, accent);
+}
+button{
+  outline:none !important;
+}
   
   /*********************************
     *   NAVBAR
@@ -123,27 +123,26 @@ body {
   .btn:hover{
     cursor: pointer;
   }
-  a.btn.btn-danger,
-  a.btn.btn-success,
-  a.btn.btn-primary,
-  a.btn.btn-info,
-  a.btn.btn-success:hover,
-  a.btn.btn-primary:hover,
-  a.btn.btn-info:hover,
-  a.btn.btn-danger:hover{
+  div.btn.btn-danger,
+  div.btn.btn-success,
+  div.btn.btn-primary,
+  div.btn.btn-info,
+  div.btn.btn-success:hover,
+  div.btn.btn-primary:hover,
+  div.btn.btn-info:hover,
+  div.btn.btn-danger:hover{
     color: white;
-    padding: 0px;
-    width: 65px;
-    height: 25px;
+    padding: 0.25em 1em;
+    white-space: nowrap;
   }
   #message-form{
     padding: 20px;
   }
+  .message-area {
+    min-width: 80%;
+  }
   #reply-form{
     padding: 10px 20px;
-  }
-  #reply-button{
-    width: 90px;
   }
   #follow-button{
     padding: 0px;
